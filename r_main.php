@@ -26,7 +26,7 @@ if(@$id != ''){
 
 // WARNING ONLY ADD PAGES THAT ARE FULLY CLASSES OR PURELY FUNCTIONS TO THIS ARRAY Else Face the wrath of a broken connection 
 	$ids = array('',
-				 'mailer.php',		//Framework Mailing	Component
+				// 't_mailer.php',		//Framework Mailing	Component
 				 'r_obsfucate.php',		//Framework Obsfucation Component
 				 'r_connection.php', 	//Framework Database Manipulation Component
 				 'r_minify.php',		//Framework File Minifying component
@@ -43,7 +43,7 @@ if(@$id != ''){
 	
 	//Loop through the entire resource array			
 	for($i = 0; $i <= (count($ids)-1); $i++){
-		
+	
 		//if the current position in the array is not the current one, include the given resource page 
 		if($i <> $pos){	
 				 
