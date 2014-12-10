@@ -1,7 +1,12 @@
 <?php
+
+	chdir('../');
+	$id = 'test';
+	$connect = true;
+	include 'r_main.php';
+	chdir('code');
 	
-	require_once 'conference.php';
-	$c = new conference();
+	
 
 ?>
 <!-- BOOTSTRAP CSS (REQUIRED ALL PAGE)-->
@@ -104,47 +109,11 @@
 	
 		<div class="col-sm-1 darkb">0800</div>
 		<div class="col-sm-2 text-center">ARRIVAL</div>
-		<div class="col-sm-2 border  text-danger"><select id="_w1a"><option selected>Workshop 1a</option> 
-			<?php
-				$pl = $c->getWorkshops("0800HRS", "12/22/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
-		<div class="col-sm-2 border  text-danger"><select id="_w3a"><option selected>Workshop 3a</option> 
-			<?php
-				$pl = $c->getWorkshops("0800HRS", "12/23/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
-		<div class="col-sm-2 border  text-danger"><select id="_w5a"><option selected>Workshop 5a</option> 
-			<?php
-				$pl = $c->getWorkshops("0800HRS", "12/24/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
 		<div class="col-sm-2 dark darkb">&nbsp;</div>
-		<div class="col-sm-1 border  text-danger"><select id="_w7a"><option selected>Workshop 7a</option> 
-			<?php
-				$pl = $c->getWorkshops("0800HRS", "12/27/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
+		<div class="col-sm-1 border  text-danger">WORKSHOP</div>
 	
 	</div>
 	</div>
@@ -155,47 +124,11 @@
 	
 		<div class="col-sm-1 ">0900</div>
 		<div class="col-sm-2 border">&nbsp;</div>
-			<div class="col-sm-2 border  text-danger"><select id="_w1b"><option selected>Workshop 1b</option> 
-			<?php
-				$pl = $c->getWorkshops("0900HRS", "12/22/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-			</select></div>
-		<div class="col-sm-2 border  text-danger"><select id="_w3b"><option selected>Workshop 3b</option> 
-			<?php
-				$pl = $c->getWorkshops("0900HRS", "12/23/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
-		<div class="col-sm-2 border  text-danger"><select id="_w5b"><option selected>Workshop 5b</option> 
-			<?php
-				$pl = $c->getWorkshops("0900HRS", "12/24/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
 		<div class="col-sm-2 dark darkb">&nbsp;</div>
-		<div class="col-sm-1 border  text-danger"><select id="_w7b"><option selected>Workshop 7b</option>
-			<?php
-				$pl = $c->getWorkshops("0900HRS", "12/26/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
+		<div class="col-sm-1 border  text-danger">WORKSHOP</div>
 	
 	</div>
 	</div>
@@ -223,29 +156,11 @@
 	
 		<div class="col-sm-1 ">1015</div>
 		<div class="col-sm-2 border ">&nbsp;</div>
-		<div class="col-sm-2 border  text-primary"><select id="_p1"><option selected>lPenary 1</option>
-			<?php
-				$pl = $c->getWorkshops("1015HRS", "12/22/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
+		<div class="col-sm-2 border text-primary">PLENARY</div>
 		<div class="col-sm-2 dark darkb">&nbsp</div>
-		<div class="col-sm-2 border  text-primary"><select id="_p4"><option selected>Plenary 4</option>
-			<?php
-				$pl = $c->getWorkshops("1015HRS", "12/24/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
+		<div class="col-sm-2 border text-primary">PLENARY</div>
 		<div class="col-sm-2 dark darkb">&nbsp;</div>
-		<div class="col-sm-1 border">let's talk</div>
+		<div class="col-sm-1 border">WORKSHOP</div>
 	
 	</div>
 	</div>
@@ -299,36 +214,9 @@
 	
 		<div class="col-sm-1 ">1400</div>
 		<div class="col-sm-2 border">&nbsp;</div>
-		<div class="col-sm-2 border  text-danger"><select id="_w2a"><option selected>Workshop 2a</option> 
-			<?php
-				$pl = $c->getWorkshops("1400HRS", "12/22/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
-		<div class="col-sm-2 border  text-danger"><select id="_w4a"><option selected>Workshop 4a</option> 
-			<?php
-				$pl = $c->getWorkshops("1400HRS", "12/23/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
-		<div class="col-sm-2 border  text-danger"><select id="_w6a"><option selected>Workshop 6a</option> 
-			<?php
-				$pl = $c->getWorkshops("1400HRS", "12/24/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
 		<div class="col-sm-2 dark darkb">&nbsp;</div>
 		<div class="col-sm-1 "></div>
 	
@@ -341,36 +229,9 @@
 	
 		<div class="col-sm-1 darkb">1500</div>
 		<div class="col-sm-2 ">&nbsp;</div>
-		<div class="col-sm-2 border  text-danger"><select id="_w2b"><option selected>Workshop 2b</option> 
-			<?php
-				$pl = $c->getWorkshops("1500HRS", "12/22/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
-		<div class="col-sm-2 border  text-danger"><select id="_w4b"><option selected>Workshop 4b</option> 
-			<?php
-				$pl = $c->getWorkshops("1500HRS", "12/23/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
-		<div class="col-sm-2 border  text-danger"><select id="_w6b"><option selected>Workshop 6b</option> 
-			<?php
-				$pl = $c->getWorkshops("1500HRS", "12/24/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
+		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
 		<div class="col-sm-2 dark darkb text-center">SPORT</div>
 		<div class="col-sm-1 text-center">COMMUNITY</div>
 	
@@ -383,36 +244,9 @@
 	
 		<div class="col-sm-1 ">1600</div>
 		<div class="col-sm-2 border">&nbsp;</div>
-		<div class="col-sm-2 border  text-primary"><select id="_p2"><option selected>Plenary 2</option> 
-			<?php
-				$pl = $c->getWorkshops("1600HRS", "12/22/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
-		<div class="col-sm-2 border  text-primary"><select id="_p3"><option selected>Plenary 3</option> 
-			<?php
-				$pl = $c->getWorkshops("1600HRS", "12/23/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
-		<div class="col-sm-2 border  text-primary"><select id="_p5"><option selected>Plenary 5</option> 
-			<?php
-				$pl = $c->getWorkshops("1600HRS", "12/24/2014");
-				$p = $pl["data"]["message"];
-				
-				foreach($p as $v ){
-					echo '<option value="'.$v['_room'].'">'.$v['_name'].'</option>';
-				}
-			?>
-		</select></div>
+		<div class="col-sm-2 border text-primary">PLENARY</div>
+		<div class="col-sm-2 border text-primary">PLENARY</div>
+		<div class="col-sm-2 border text-primary">PLENARY</div>
 		<div class="col-sm-2 dark darkb">&nbsp;</div>
 		<div class="col-sm-1 text-center">IMPACT</div>
 	
@@ -469,8 +303,5 @@
 </div>
 	
 </div>
-
-<br><br>
-<input type="button" id=""
 
 

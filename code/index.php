@@ -297,6 +297,46 @@
 							$("#content").html(data);
 							$(function(){
 
+								$("#addAtendee").click(function(){
+
+									_name 		= $("#_name").val()
+									_age 		= $("#_age").val() 
+									_nationality= $("#_nationality").val()
+									_gender		= $("#_gender").val()
+									_telephone	= $("#_telephone").val()
+									_email		= $("#_email").val()
+									_division	= $("#_division").val()
+									_church		= $("#_church").val()
+
+									if( _name.length < 5 ){
+										$('#_name').focus();
+									}else if( _age.length < 1){
+										$('#_age').focus();
+									}else if( _nationality.length < 2 ){
+										$('#_nationality').focus();
+									}else if( _gender.length === 0 ){
+										$('#_gender').focus();
+									}else if( _telephone.length < 10 ){
+										$('#_telephone').focus();
+									}else if( _division.length < 3 ){
+										$('#_division').focus();
+									}else if( _church.length < 3 ){
+										$('#_church').focus();
+									}else{
+
+										$.post(
+											'proc.php',
+											{action: "addAtendee", _name: _name, _age:_age, _nationality:_nationality, _gender:_gender, _telephone: _telephone, _email:_email, _division:_division, _church:_church }, 
+											function(data, status){
+												d =JSON.parse(data)
+												$("#response").html(d.data.message) 
+											}
+												);
+										
+									}
+									
+								})
+
 							});
 
 					}
@@ -311,19 +351,20 @@
 
 							$("#content").html(data);
 							$(function(){
+								
 								$("#_day").datepicker();
 								$("#_day").datepicker("setDate", new Date)
 								
 								//ADD WORKSHOP HANDLER
 								$("#addWorkshop").click(function(){
-									r = $("#response")
-									_name 			= $("_name").val();
-									_topic  		= $("_topic").val();
-									_day    		= $("_day").val();
-									_time  			= $("_time").val();
-									_facilitator	= $("_facilitator").val();
-									_room			= $("_room").val();
-									_description	= $("_description").val();
+																	
+									_name 			= $("#_name").val();
+									_topic  		= $("#_topic").val();
+									_day    		= $("#_day").val();
+									_time  			= $("#_time").val();
+									_facilitator	= $("#_facilitator").val();
+									_room			= $("#_room").val();
+									_description	= $("#_description").val();
 
 									if( _name.length < 4 ){
 										$("#_name").focus()
@@ -331,46 +372,33 @@
 									}else if( _topic.length == 0 ){
 										
 										$("#_topic").focus()
-										r.html("Enter a long enough topic");
 										
 									}else if( _day.length < 1 ){
 										
 										$("#_day").focus();
-										r.html("Please pick a day");
 										
 									}else if( _time.length < 1 ){
 										
 										$("#_time").focus();
-										r.html("Please select an hour");
 										
 									}else if( _facilitator.length == 0 ){
 										
 										$("#_facilitator").focus();
-										r.html("Please select a facilitator");
 										
-									}else if _room.length == 0){
+									}else if (_room.length == 0){
 									
 										$("#_room").focus();
-										r.html("Please pick a room");
 										
 									}else{
 
 										$.post('proc.php',
-												{
-												action: "addWorkshop.php",
-												_name : _name,
-												_topic: _topic,
-												_day: _day
-												_time: _time,
-												_facilitator: _facilitator,
-												_room : _room,
-												_description: _description
-											 },
+											{ action: "addWorkshop", _name : _name, _topic: _topic, _day: _day,	_time: _time, _facilitator: _facilitator, _room : _room, _description: _description  },
 											 function(data, response){
-												 d = JSON.parse(data)
-												r.html(d.data.message);
-											}
-										 )
+												 $(function(){
+													 d = JSON.parse(data)
+													$("#response").html(d.data.message);
+												 });
+											})
 										
 									}		
 									

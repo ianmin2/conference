@@ -4,7 +4,7 @@ class conference{
 	
 	public $connection, $crypto, $req;
 	
-	public function __construct($req){
+	public function __construct($req=array()){
 		
 		chdir("../");
 			$id = 'index.php';
@@ -143,8 +143,8 @@ class conference{
 //Adding a record of an atendee's class {schedule}
 	public function addRecord(){
 		
-		$fields = array('_atendee', '_workshop', '_day', '_time', '_facilitator');
-		$required = array('_atendee', '_workshop', '_day', '_time');
+		$fields = array('_atendee', '_workshop', '_day', '_time', '_facilitator', '_route' );
+		$required = array('_atendee', '_workshop', '_day', '_time', '_route' );
 		
 		//Check for all required fields
 		foreach($required as $k => $v){
@@ -154,7 +154,7 @@ class conference{
 		}
 		
 		//Build the query string
-		$query = "INSERT INTO schedule ( _atendee, _workshop, _day, _time, _facilitator ) VALUES (";
+		$query = "INSERT INTO schedule ( _atendee, _workshop, _day, _time, _facilitator, _route ) VALUES (";
 		foreach($fields as $k => $v){
 			$query .= "'".htmlentities(@$this->req[$v])."',";
 		}
