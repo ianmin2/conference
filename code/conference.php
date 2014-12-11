@@ -143,8 +143,8 @@ class conference{
 //Adding a record of an atendee's class {schedule}
 	public function addRecord(){
 		
-		$fields = array('_atendee', '_workshop', '_day', '_time', '_facilitator', '_route' );
-		$required = array('_atendee', '_workshop', '_day', '_time', '_route' );
+		$fields = array('_atendee', '_w1a', '_w1b', '_w2a', '_w2b', '_w3a', '_w3b', '_w4a', '_w4b', '_w5a', '_w5b', '_w6a', '_w6b', '_w7a', '_w7b', '_p1', '_p2', '_p3', '_p4', '_p5' );
+		$required = $fields;
 		
 		//Check for all required fields
 		foreach($required as $k => $v){
@@ -154,7 +154,7 @@ class conference{
 		}
 		
 		//Build the query string
-		$query = "INSERT INTO schedule ( _atendee, _workshop, _day, _time, _facilitator, _route ) VALUES (";
+		$query = "INSERT INTO schedule ( _atendee,_w1a,_w1b,_w2a,_w2b,_w3a,_w3b,_w4a,_w4b,_w5a,_w5b,_w6a,_w6b,_w7a,_w7b,_p1,_p2,_p3,_p4,_p5 ) VALUES (";
 		foreach($fields as $k => $v){
 			$query .= "'".htmlentities(@$this->req[$v])."',";
 		}
