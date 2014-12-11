@@ -83,25 +83,31 @@ class conference{
 //Adding a facilitator
 	public function addFacilitator(){
 		
-		$fields = array('_name');
-		$required = $fields;
+		$fields = array('_name', '_capacity');
+		$required = array('_name');
 		
 		//Check if all the required fields are filled in and build query string
-		$query = "INSERT INTO facilitators ( _name ) VALUE (" ;
+		
 		foreach ( $required as $k => $v ){
 			if(@$this->req[$v] == ""){
 				return array("response" => "ERROR", "data"=> array("message"=>"Failed to get the facilitator ".str_replace("_", " ", $v) , "command"=>"" ));
-			}else{
-				$query .= "'".@htmlentities($this->req[$v])."'";
 			}
 		}
-		$query .= ")";
+		
+		$query = "INSERT INTO facilitators ( _name, _capacity  ) VALUES (" ;
+		foreach ($fields as $k => $v ){
+			$query .= "'".@htmlentities(trim($this->req[$v]))."',";
+		}		
+				
+		$query = rtrim($query, ",");
+		$query .= " )";
+		//return array("response" => "TEST", "data"=> array("message"=>$query , "command"=>"" ));
 		$query = $this->connection->query($query);
 		
 		if($query){
 			return array("response" => "SUCCESS", "data"=> array("message"=>"Facilitator successfully added!" , "command"=>"" ));
 		}else{
-			return array("response" => "ERROR", "data"=> array("message"=>"Failed to add the facilitator \n\r please check that the record is not a duplicate. " , "command"=>"" ));
+			return array("response" => "ERROR", "data"=> array("message"=>"Failed to add the facilitator  \n\r please check that the record is not a duplicate. " , "command"=>"" ));
 		}
 		
 				
@@ -211,16 +217,21 @@ class conference{
 	}
 	
 //Get schedules
-	public function getSchedule( $workshop = "" ){
+	public function getSchedule( $atendee = "" ){
 		
-		if($workshop == ""){
+		if($atendee == ""){
 			$schedule = $this->connection->printQueryResults("SELECT * FROM schedule");
-			return array("response" => "SUCCESS", "data"=> array("message"=>$workshops, "command"=>"" ));
+			return array("response" => "SUCCESS", "data"=> array("message"=>$schedule, "command"=>"" ));
 		}else{
-			$schedule = $this->connection->printQueryResults("SELECT * FROM schedule WHERE _workshop='".$workshop."' ");
+			$schedule = $this->connection->printQueryResults("SELECT * FROM schedule WHERE _atendee='".$atendee."' ");
+			return array("response" => "SUCCESS", "data"=> array("message"=>$schedule, "command"=>"" ));
 		}
 		
 	}
+	
+
+
+	
 	//END OF CLASS
 }
 

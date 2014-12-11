@@ -301,30 +301,73 @@
 <!--  -->
 <script type="text/javascript">
 
+$(function(){
+	
+	_atendee = $("#_atendee").val();
+	_w1a = $("#_w1a");
+	_w1b = $("#_w1b");
+	_w2a = $("#_w2a");
+	_w2b = $("#_w2b");
+	_w3a = $("#_w3a");
+	_w3b = $("#_w3b");
+	_w4a = $("#_w4a");
+	_w4b = $("#_w4b");
+	_w5a = $("#_w5a");
+	_w5b = $("#_w5b");
+	_w6a = $("#_w6a");
+	_w6b = $("#_w6b");
+	_w7a = $("#_w7a");
+	_w7b = $("#_w7b");
+	_p1 = $("#_p1");
+	_p2 = $("#_p2");
+	_p3 = $("#_p3");
+	_p4 = $("#_p4");
+	_p5 = $("#_p5");
+	
 
-_atendee = $("#_atendee").val();
-_w1a = $("#_w1a");
-_w1b = $("#_w1b");
-_w2a = $("#_w2a");
-_w2b = $("#_w2b");
-_w3a = $("#_w3a");
-_w3b = $("#_w3b");
-_w4a = $("#_w4a");
-_w4b = $("#_w4b");
-_w5a = $("#_w5a");
-_w5b = $("#_w5b");
-_w6a = $("#_w6a");
-_w6b = $("#_w6b");
-_w7a = $("#_w7a");
-_w7b = $("#_w7b");
-_p1 = $("#_p1");
-_p2 = $("#_p2");
-_p3 = $("#_p3");
-_p4 = $("#_p4");
-_p5 = $("#_p5");
+	
+	if( localStorage.getItem("current") != 0 || localStorage.getItem("current") != null || localStorage.getItem("current") != "undefined" ){ 
+		
+		$.post(
+				"proc.php",
+				{ action: 'getSchedule', atendee : localStorage.getItem("current") },
+				function(data, response){
+					
+					d = JSON.parse(data);
+					s = d.data.message;
+					
+					_w1a.html( s.w1a ) 
+					_w2a.html( s.w2a ) 
+					_w3a.html( s.w3a ) 
+					_w4a.html( s.w4a ) 
+					_w5a.html( s.w5a ) 
+					_w6a.html( s.w6a ) 
+					_w7a.html( s.w7a )
+					_w1b.html( s.w1b ) 
+					_w2b.html( s.w2b ) 
+					_w3b.html( s.w3b ) 
+					_w4b.html( s.w4b ) 
+					_w5b.html( s.w5b ) 
+					_w6b.html( s.w6b ) 
+					_w7b.html( s.w7b )
+					
+					_p1.html( s.p1 )
+					_p2.html( s.p2 )
+					_p3.html( s.p3 )
+					_p4.html( s.p4 )
+					_p5.html( s.p5 )
+					
+					
+				}
+		)
+		
+	}else{
+		alert("Please define a user whose principal guide is to be printed");
+	}
+	
 
 
-
+});
 </script>
 
 
