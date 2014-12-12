@@ -392,7 +392,7 @@
 									}else{
 
 										$.post('proc.php',
-											{ action: "addWorkshop", _name : _name, _topic: _topic, _day: _day,	_time: _time, _facilitator: _facilitator, _room : _room, _description: _description  },
+											{ action: "addWorkshop", _name : _name, _topic: _topic, _day: _day,	_time: _time, _facilitator: _facilitator, _facilitator2 : $("#_facilitator2").val(),_room : _room, _description: _description  },
 											 function(data, response){
 												 $(function(){
 													 d = JSON.parse(data)

@@ -25,7 +25,7 @@ class conference{
 //Adding a Workshop	
 	public function addWorkshop(){
 		
-		$fields 	= array('_name', '_topic', '_day', '_time', '_facilitator', '_room', '_description');
+		$fields 	= array('_name', '_topic', '_day', '_time', '_facilitator', '_facilitator2', '_room', '_description');
 		$required 	= array('_name', '_topic', '_day', '_time', '_facilitator', '_room');
 		
 		//Check if all the required fields are filled in
@@ -36,7 +36,7 @@ class conference{
 		}
 		
 		//Insert the workshop values
-		$query = "INSERT INTO workshops ( _name, _topic, _day, _time, _facilitator, _room, _description ) VALUES ( ";
+		$query = "INSERT INTO workshops ( _name, _topic, _day, _time, _facilitator, _facilitator2, _room, _description ) VALUES ( ";
 		foreach ( $fields as $k => $v ){
 			$query .= "'".@htmlentities($this->req[$v])."',";
 		}
@@ -190,7 +190,7 @@ class conference{
 //Display Facilitators
 	public function getFacilitators(){
 		
-		$facilitators = $this->connection->printQueryResults("SELECT * FROM facilitators");
+		$facilitators = $this->connection->printQueryResults("SELECT * FROM facilitators order by _name ");
 		return array("response" => "SUCCESS", "data"=> array("message"=>$facilitators , "command"=>"" ));
 		
 	}

@@ -274,7 +274,19 @@ $val = '
 			 
 				
 		$val .= '	</select>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="_room" style="min-width: 200px; min-height: 35px; text-align: center;">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="_facilitator2" style="min-width: 200px; min-height: 35px; text-align: center;">
+				<option value="" selected >Facilitator 2 </option>';
+				
+			   
+			       $query = $connection->query("SELECT * FROM facilitators");
+			       while ($data = mysqli_fetch_array($query)) {
+			           $val .= '<option value="'.$data['id'].'"  >'.$data['_name'].'</option>';
+			      }
+			 
+				
+		$val .= '	</select>
+				
+			<br><br><select id="_room" style="min-width: 200px; min-height: 35px; text-align: center;">
 				<option value="" selected >Room | venue </option>';
 		 
 			       $query = $connection->query("SELECT * FROM rooms ");
