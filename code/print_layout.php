@@ -1,14 +1,6 @@
-<?php
-
-	chdir('../');
-	$id = 'test';
-	$connect = true;
-	include 'r_main.php';
-	chdir('code');
-	
-	
-
-?>
+<!doctype html>
+<html>
+<head>
 <!-- BOOTSTRAP CSS (REQUIRED ALL PAGE)-->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 		
@@ -51,257 +43,94 @@
 				font-weight: bold;
 				text-align: center;
 			}
+			@media print
+			{    
+			    .no-print, .no-print *
+			    {
+			        display: none !important;
+			    }
+			}
 		
 		</style>
-<!--  -->
-<!--  -->
-<div class="row ">				
-<div class=" block-center  col-lg-11 container-fluid" >
-	
-	<div class="row ">
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 bold">TIME</div>
-		<div class="col-sm-2 bg-info">Sunday</div>
-		<div class="col-sm-2 bg-success">Monday</div>
-		<div class="col-sm-2 bg-primary">Tuesday</div>
-		<div class="col-sm-2 bg-warning">Wednesday</div>
-		<div class="col-sm-2 bg-danger">Thursday</div>
-		<div class="col-sm-1 dark">Friday</div>
-	
-	</div>
-	</div>
-	
-	
-	<div class="row ">
-	<!-- 5:00 - 5:45 Physical fitness -->
-	<div class="col-lg-12 ">	
-		<div class="col-sm-1 ">0500</div>
-		<div class="col-sm-2 border">&nbsp;</div>
-		<div class="col-sm-9 text-center border darker" style="color: gray !important;">Physical Fitness</div>	
-	</div>
-	</div>
-	
-	
-	<div class="row ">
-	<!-- 6:00 - 7:00 Devotion -->
-	<div class="col-lg-12 ">	
-		<div class="col-sm-1 darkb">0600</div>
-		<div class="col-sm-2 ">&nbsp;</div>
-		<div class="col-sm-9 text-center border bg-info">Devotion</div>	
-	</div>
-	</div>
-	
-	
-	<div class="row ">
-	<!-- 7:00 - 8:00 Breakfast -->
-	<div class="col-lg-12 ">	
-		<div class="col-sm-1  ">0700</div>
-		<div class="col-sm-2 border">&nbsp;</div>
-		<div class="col-sm-9 text-center border bg-success">Breakfast</div>	
-	</div>
-	</div>
-	
-	
-	<div class="row ">
-	<!-- 8:00 -9:00 Workshop -->
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 darkb">0800</div>
-		<div class="col-sm-2 text-center">ARRIVAL</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 dark darkb">&nbsp;</div>
-		<div class="col-sm-1 border  text-danger">WORKSHOP</div>
-	
-	</div>
-	</div>
-	
-	<div class="row ">
-	<!-- 9:00 - 10:00 Workshop -->
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 ">0900</div>
-		<div class="col-sm-2 border">&nbsp;</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 dark darkb">&nbsp;</div>
-		<div class="col-sm-1 border  text-danger">WORKSHOP</div>
-	
-	</div>
-	</div>
-	
-	
-	<div class="row ">
-	<!-- 10:00 -10:15 Break -->
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 darkb">1000</div>
-		<div class="col-sm-2 text-center">&</div>
-		<div class="col-sm-2 dark darkb">Break</div>
-		<div class="col-sm-2 dark darkb">Songspiration</div>
-		<div class="col-sm-2 dark darkb" >Break</div>
-		<div class="col-sm-2 dark darkb text-center"  >TOURS,</div>
-		<div class="col-sm-1 dark darkb">Break</div>
-	
-	</div>
-	</div>
-	
-	
-	<div class="row ">
-	<!-- 10:15 - 11:15 Plenary -->
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 ">1015</div>
-		<div class="col-sm-2 border ">&nbsp;</div>
-		<div class="col-sm-2 border text-primary">PLENARY</div>
-		<div class="col-sm-2 dark darkb">&nbsp</div>
-		<div class="col-sm-2 border text-primary">PLENARY</div>
-		<div class="col-sm-2 dark darkb">&nbsp;</div>
-		<div class="col-sm-1 border">WORKSHOP</div>
-	
-	</div>
-	</div>
-	
-	
-	<div class="row ">
-	<!-- 11:15 - 11:45 session -->
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 darkb">1115</div>
-		<div class="col-sm-2 text-center">REGISTRATION</div>
-		<div class="col-sm-2 border bg-info">songspiration</div>
-		<div class="col-sm-2 dark darkb text-center">OFFICIAL OPENING</div>
-		<div class="col-sm-2 border bg-info">songspiration</div>
-		<div class="col-sm-2 dark darkb text-center">RECREATION</div>
-		<div class="col-sm-1 border bg-info">songspiration</div>
-	
-	</div>
-	</div>
-	
-	<div class="row ">
-	<!-- 11:45 - 13:00 Power Hour & sessions -->
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 ">1145</div>
-		<div class="col-sm-2 border">&nbsp;</div>
-		<div class="col-sm-2 border text-info bold text-center">Power Hour</div>
-		<div class="col-sm-2 dark darkb">&nbsp</div>
-		<div class="col-sm-2 border text-info bold text-center">Power Hour</div>
-		<div class="col-sm-2 dark darkb">&nbsp;</div>
-		<div class="col-sm-1 border text-info text-center">P.H</div>
-	
-	</div>
-	</div>
-	
-	
-	<div class="row ">
-	<!-- 13:00 - 14:00 Lunch -->
-	<div class="col-lg-12 ">	
-		<div class="col-sm-1  darkb">1300</div>
-		<div class="col-sm-2 ">&nbsp;</div>
-		<div class="col-sm-6 text-center border bg-success">Lunch</div>	
-		<div class="col-sm-2 border dark darkb text-center">&</div>
-		<div class="col-sm-1 text-center border bg-success">Lunch</div>
-	</div>
-	</div>
-	
-	<div class="row ">
-	<!-- 14:00 -15:00 workshop -->
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 ">1400</div>
-		<div class="col-sm-2 border">&nbsp;</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 dark darkb">&nbsp;</div>
-		<div class="col-sm-1 "></div>
-	
-	</div>
-	</div>
-	
-	<div class="row ">
-	<!-- 15:00 -16:00 workshop -->
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 darkb">1500</div>
-		<div class="col-sm-2 ">&nbsp;</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 border  text-danger">WORKSHOP</div>
-		<div class="col-sm-2 dark darkb text-center">SPORT</div>
-		<div class="col-sm-1 text-center">COMMUNITY</div>
-	
-	</div>
-	</div>
-	
-	<div class="row ">
-	<!-- 16:00 -17:00 plenary -->
-	<div class="col-lg-12">
-	
-		<div class="col-sm-1 ">1600</div>
-		<div class="col-sm-2 border">&nbsp;</div>
-		<div class="col-sm-2 border text-primary">PLENARY</div>
-		<div class="col-sm-2 border text-primary">PLENARY</div>
-		<div class="col-sm-2 border text-primary">PLENARY</div>
-		<div class="col-sm-2 dark darkb">&nbsp;</div>
-		<div class="col-sm-1 text-center">IMPACT</div>
-	
-	</div>
-	</div>
-	
-	
-	<div class="row ">
-	<!-- 17:00 -18:00 sports -->
-	<div class="col-lg-12">	
-		<div class="col-sm-1 darkb">1700</div>
-		<div class="col-sm-2 ">&nbsp;</div>
-		<div class="col-sm-6  dark darkb text-center">Sports</div>
-		<div class="col-sm-2 dark darkb" >&nbsp;</div>
-		<div class="col-sm-1 ">&nbsp;</div>	
-	</div>
-	</div>
-	
-	<div class="row ">
-	<!-- 18:00 - 19:00 Dinner -->
-	<div class="col-lg-12 ">	
-		<div class="col-sm-1 ">1800</div>
-		<div class="col-sm-11 text-center border bg-success">Dinner</div>	
-	</div>
-	</div>
-	
-	<div class="row ">
-	<!-- 19:00 - 19:30 Union Reports -->
-	<div class="col-lg-12 ">	
-		<div class="col-sm-1  darkb">1900</div>
-		<div class="col-sm-10 text-center border dark">Union reports (video)</div>
-		<div class="col-sm-1 text-center border bg-info">MUSIC</div>	
-	</div>
-	</div>
-
-	<div class="row ">
-	<!-- 19:30 - 20:00 Union Reports -->
-	<div class="col-lg-12 ">	
-		<div class="col-sm-1  ">1930</div>
-		<div class="col-sm-10 text-center border bg-info">Songspiration</div>
-		<div class="col-sm-1 text-center border bg-info">Extravaganza</div>	
-	</div>
-	</div>
-	
-<div class="row">	
-	<!-- 20:00 - 21:00 Breakfast -->
-	<div class="col-lg-12 ">	
-		<div class="col-sm-1  darkb">2000</div>
-		<div class="col-sm-11 text-center border darker" style="color: gray !important;">Vespers</div>	
-	</div>
-</div>
+</head>
+<body>
 
 
-</div>
+
+
+<script>
+	//Fetch the atendee conference schedule
+	 $(function(){
+		
+
+		//Make references to the locally stored objects
+		fs = JSON.parse(localStorage.getItem("facilitators"));
+		ws = JSON.parse(localStorage.getItem("workshops"))
+		us = JSON.parse(localStorage.getItem("userSched"))
+		ud = JSON.parse(localStorage.getItem("userDet"))
+		rd = JSON.parse(localStorage.getItem("rooms"))
+		wn = { _w1a : "w1a",
+			   _w1b : "w1b", 
+			   _w2a : "w2a", 
+			   _w2b : "w2b", 
+			   _w3a : "w3a",
+			   _w3b : "w3b",
+			   _w4a : "w4a", 
+			   _w4b : "w4b",
+			   _w5a : "w5a",
+			   _w5b : "w5b",
+			   _w6a : "w6a",
+			   _w6b : "w6b",
+			   _w7a : "w7a",
+			   _w7b : "w7b"
+			}
+		wt = { _w1a : "0800 [Mon]",
+			   _w1b : "0900 [Mon]", 
+			   _w2a : "1400 [Mon]", 
+			   _w2b : "1500 [Mon]", 
+			   _w3a : "0800 [Tue]",
+			   _w3b : "0900 [Tue]",
+			   _w4a : "1400 [Tue]", 
+			   _w4b : "1500 [Tue]",
+			   _w5a : "0800 [Wed]",
+			   _w5b : "0900 [Wed]",
+			   _w6a : "1400 [Wed]",
+			   _w6b : "1500 [Wed]",
+			   _w7a : "0800 [Fri]",
+			   _w7b : "0900 [Fri]"
+			}
+		/* 
+			dom = "";
+			for( $i = 1; $i <= 7; $i++ ){
+				if( $i % 2 != 0 ){ dor = "a" }else{ dor = "b" }
+				dom = dom + "_w"+$i+dor + ' : "' + 'w'+$i+dor + '",';
+			}
+			document.writeln(dom)
+		*/
+
+		
+		//alert(ws)
+		//console.log("\n\n"+ us[0]._w7a +" \n\n")
+		fdata = '<table class="table table-striped table-bordered " style="font-family: courier; "><tr class="text-danger" style="font-family: arial;"><td width="2%">Workshop</td><td width="8%">Room</td><td style="overflow:hidden;" width="55%">topic</td><td width="35%">Facilitator</td></tr>'
+		for( w in wn ){
+			//console.log( w + " = " + ( us[w] ) + " => " + ws[ (us[w] - 1) ]._name)
+			fdata  += ' <tr> <td width="12%"> '+ wn[w] +' @'+ wt[w] +' </td>  <td width="8%">'+ rd[ ws[ ( us[w] - 1  ) ]._room ] +'</td>  <td style="overflow:hidden;" width="55%">'+ ws[ ( us[w] - 1 )] ._topic +'</td> 	<td width="35%">' + fs[ ws[ (us[w] - 1) ]._facilitator ] + '</td> 		</tr>';
+		}
+		fdata += '</table> <br><br> <div style="font-family: courier;"> This schedule belongs to <b>' + ud[0]._fname + " " + ud[0]._lname +  '</b></div>'
+		$("#schedule").html(fdata)
+		//console.log(ws[w])
+		//fdata =' <tr> <td width="2%"> Workshop</td>  <td width="8%">room</td>  <td style="overflow:hidden;" width="70%">topic</td> 	<td width="20%">Facilitator</td> 		</tr>';
+	}); 
+</script>
+<div class="no-print btn btn-success" onclick="javascript:window.print()">Print Schedule</div>
+<div class="no-print btn btn-success" onclick="javascript:window.location='layout.php'">View Program layout</div>
+<table width="100% "  class="table table-striped">
+
+	<div id="schedule"  ></div>
 	
-</div>
+	
+</table>
 
 
+</body>
+</html>

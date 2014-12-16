@@ -96,7 +96,7 @@ class conference{
 		
 		$query = "INSERT INTO facilitators ( _name, _capacity  ) VALUES (" ;
 		foreach ($fields as $k => $v ){
-			$query .= "'".@htmlentities(trim($this->req[$v]))."',";
+			$query .= "'".@trim(htmlspecialchars($this->req[$v]))."',";
 		}		
 				
 		$query = rtrim($query, ",");
@@ -150,12 +150,12 @@ class conference{
 	public function addRecord(){
 		
 		$fields = array('_atendee', '_w1a', '_w1b', '_w2a', '_w2b', '_w3a', '_w3b', '_w4a', '_w4b', '_w5a', '_w5b', '_w6a', '_w6b', '_w7a', '_w7b', '_p1', '_p2', '_p3', '_p4', '_p5' );
-		$required = $fields;
+		$required = array('_atendee', '_w1a', '_w1b', '_w2a', '_w2b', '_w3a', '_w3b', '_w4a', '_w4b', '_w5a', '_w5b', '_w6a', '_w6b', '_w7a', '_w7b' );
 		
 		//Check for all required fields
 		foreach($required as $k => $v){
-			if(@$this->req[$k] == ""){
-				return array("response" => "ERROR", "data"=> array("message"=>"Failed to get the  ".str_replace("_", " ", $v) , "command"=>"" ));
+			if(@$this->req[$v] == ""){
+				return array("response" => "ERROR", "data"=> array("message"=>"Failed to get the schedule  ".str_replace("_", " ", $v) , "command"=>"" ));
 			}
 		}
 		
@@ -209,10 +209,16 @@ class conference{
 	}
 	
 //Display Atendee information
-	public function getAtendees(){
+	public function getAtendees( $id = "" ){
 		
-		$atendees = $this->connection->printQueryresults("SELECT * FROM atendees");
-		return array("response" => "SUCCESS", "data"=> array("message"=>$workshops, "command"=>"" ));
+		if( $id  == "" ){
+			$atendees = $this->connection->printQueryresults("SELECT * FROM atendees");
+			return array("response" => "SUCCESS", "data"=> array("message"=>$atendees, "command"=>"multiple" ));
+		}else{
+			
+			$atendee = $this->connection->printQueryresults("SELECT * FROM atendees WHERE id = '". $id."'");
+			return array("response" => "SUCCESS", "data"=> array("message"=>$atendee, "command"=>"single" ));
+		}
 		
 	}
 	
@@ -229,6 +235,22 @@ class conference{
 		
 	}
 	
+//Check if user has schedule history
+	public function hasHistory($atendee){
+		
+		if( @$atendee ){
+			$exists = $this->connection->num_rows("SELECT * FROM schedule WHERE _atendee='".$atendee."'");
+			if( $exists >= 1){
+				return array("response" => "SUCCESS", "data"=> array("message"=>$exists, "command"=>"" ));
+			}else{
+				return array("response" => "ERROR", "data"=> array("message"=>"", "command"=>"" ));
+			}
+		}else{
+			return array("response" => "ERROR", "data"=> array("message"=>"", "command"=>"" ));
+		}
+		
+	}
+
 
 
 	

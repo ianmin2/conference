@@ -1,6 +1,20 @@
+$__url = "http://127.0.0.1/conference/code/"
+
+//Continue to main application
+function useUser( userID ){
+	
+	doAdd = confirm("Are you sure that you want to continue with the selected person ");
+	if( doAdd ){
+		localStorage.setItem("current", userID );
+		window.location = "pickWorkshop.php";
+	}
+	
+}	
 
 $(document).ready(function(){
 
+	
+	
 
 /* Custom force sidebar color */
 
@@ -21,7 +35,7 @@ $(document).ready(function(){
 
 	 todate = new Date();
      ftr = $("#footer");
-    ftr.html("&copy;" + todate.getFullYear() + " <a href='#lets_code'>lets code </a> for <a href='http://ueab.ac.ke/' > UEAB</a>");
+    ftr.html("&copy;" + todate.getFullYear() + " <a href='#lets_code'>Seventh Day Adventist Church </a> for <a href='http://#ecd/' > ECD conference 2014 </a>");
         
 
 

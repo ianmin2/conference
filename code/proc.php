@@ -49,13 +49,17 @@
 		break;
 		
 		case 'getAtendees':
-			echo json_encode($proc->getAtendees());
+			echo json_encode($proc->getAtendees(@$_REQUEST['id']));
 			exit;
 		break;
 		
 		case 'getSchedule':
-			echo json_encode($proc->getSchedule(@$_REQUEST['workshop']));
+			echo json_encode($proc->getSchedule(@$_REQUEST['_atendee']));
 			exit;
+		break;
+		
+		case 'hasHistory':
+			echo json_encode($proc->hasHistory(@$_REQUEST['id']));
 		break;
 
 		case 'test':

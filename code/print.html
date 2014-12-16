@@ -303,7 +303,6 @@
 
 $(function(){
 	
-	_atendee = $("#_atendee").val();
 	_w1a = $("#_w1a");
 	_w1b = $("#_w1b");
 	_w2a = $("#_w2a");
@@ -326,40 +325,142 @@ $(function(){
 	
 
 	
-	if( localStorage.getItem("current") != 0 || localStorage.getItem("current") != null || localStorage.getItem("current") != "undefined" ){ 
+	if( localStorage.getItem("current") != null  ){ 
+		
+		$.post(
+				'proc.php',
+				{action : "getWorkshops"}, 
+				function(data, result){
+					localStorage.setItem("workshops", JSON.stringify(JSON.parse(data).data.message))
+					
+				}
+				
+		);
+		
+		$.post(
+				'proc.php',
+				{ action: 'getSchedule' , _atendee : localStorage.getItem("current") },  
+				function(data,result ){
+					d = JSON.parse(data)
+					if(d.response == "SUCCESS"){
+						localStorage.setItem("userSched", JSON.stringify(d.data.message[0]))
+					}else{
+						window,location = 'index.php'
+					}
+				}
+			);
+
+			//fetch the atendee user data
+			$.post(
+				'proc.php',
+				{ action: 'getAtendees', id: localStorage.getItem("current") },
+				function(data,result){
+					d = JSON.parse(data)
+					if(d.response == "SUCCESS"){
+						localStorage.setItem("userDet", JSON.stringify(d.data.message))
+						
+					}else{
+						window,location = 'index.php'
+					}
+				}
+			);
+			
+		//if( localStorage.getItem("facilitators") == null ){
+			//Fetch a list of all facilitators	
+			$.post(
+				'proc.php',
+				{ action: 'getFacilitators' },
+				function(data,result){
+					n = JSON.parse(data)
+					fs = n.data.message
+					
+					if(n.response == "SUCCESS"){							
+
+					var iara =  []
+						
+						for( f in fs ){
+							//console.log(fs[f].id)	
+							iara[ fs[f].id ] = fs[f]._name; 
+						}
+						//console.log((iara[4]))
+
+						localStorage.setItem("facilitators",  JSON.stringify(iara ));				
+					}
+				}
+			);
+		// }
+			
+		//if( localStorage.getItem("rooms") == null ){
+			//Fetch a list of all rooms	
+			$.post(
+				'proc.php',
+				{ action: 'getRooms' },
+				function(data,result){
+					n = JSON.parse(data)
+					fs = n.data.message
+					
+					if(n.response == "SUCCESS"){							
+
+					var iara =  []
+						
+						for( f in fs ){
+							//console.log(fs[f].id)	
+							iara[ fs[f].id ] = fs[f]._name; 
+						}
+						//console.log((iara[4]))
+						//console.log(iara)
+						localStorage.setItem("rooms",  JSON.stringify(iara ));				
+					}
+				}
+			);
+		// }
+
+							
+			
+		
+			
 		
 		$.post(
 				"proc.php",
-				{ action: 'getSchedule', atendee : localStorage.getItem("current") },
+				{ action: 'getSchedule', _atendee : localStorage.getItem("current") },
 				function(data, response){
 					
 					d = JSON.parse(data);
-					s = d.data.message;
+					s = d.data.message[0];
+										
+					_w1a.html( s._w1a ) 
+					_w2a.html( s._w2a ) 
+					_w3a.html( s._w3a ) 
+					_w4a.html( s._w4a ) 
+					_w5a.html( s._w5a ) 
+					_w6a.html( s._w6a ) 
+					_w7a.html( s._w7a )
+					_w1b.html( s._w1b ) 
+					_w2b.html( s._w2b ) 
+					_w3b.html( s._w3b ) 
+					_w4b.html( s._w4b ) 
+					_w5b.html( s._w5b ) 
+					_w6b.html( s._w6b ) 
+					_w7b.html( s._w7b )
 					
-					_w1a.html( s.w1a ) 
-					_w2a.html( s.w2a ) 
-					_w3a.html( s.w3a ) 
-					_w4a.html( s.w4a ) 
-					_w5a.html( s.w5a ) 
-					_w6a.html( s.w6a ) 
-					_w7a.html( s.w7a )
-					_w1b.html( s.w1b ) 
-					_w2b.html( s.w2b ) 
-					_w3b.html( s.w3b ) 
-					_w4b.html( s.w4b ) 
-					_w5b.html( s.w5b ) 
-					_w6b.html( s.w6b ) 
-					_w7b.html( s.w7b )
-					
-					_p1.html( s.p1 )
-					_p2.html( s.p2 )
-					_p3.html( s.p3 )
-					_p4.html( s.p4 )
-					_p5.html( s.p5 )
+					_p1.html( s._p1 )
+					_p2.html( s._p2 )
+					_p3.html( s._p3 )
+					_p4.html( s._p4 )
+					_p5.html( s._p5 )
 					
 					
 				}
 		)
+		
+		setInterval(function(){
+			
+			if( localStorage.getItem("current") != null && localStorage.getItem("facilitators") != null && localStorage.getItem("rooms") != null && localStorage.getItem("userDet") != null  && localStorage.getItem("userSched") != null && localStorage.getItem("workshops") != null){
+				window.location = 'print_layout.php'
+			}
+			
+		},200);
+		
 		
 	}else{
 		alert("Please define a user whose principal guide is to be printed");
@@ -368,6 +469,7 @@ $(function(){
 
 
 });
+
 </script>
 
 
